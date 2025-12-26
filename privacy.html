@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ReDewable Energy Company Privacy Policy">
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
+  
   <title>Privacy Policy | ReDewable Energy Company</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,9 +35,28 @@
       --gray-700: #404040;
       --gray-800: #262626;
       --gray-900: #171717;
+      --brand-green: #1a3d2f;
       
       --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --max-width: 800px;
+      
+      --bg-primary: var(--white);
+      --text-primary: var(--gray-800);
+      --text-secondary: var(--gray-600);
+      --text-muted: var(--gray-500);
+      --border-color: var(--gray-200);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #0a0a0a;
+        --text-primary: #f5f5f5;
+        --text-secondary: #a3a3a3;
+        --text-muted: #737373;
+        --border-color: #262626;
+        --gray-200: #262626;
+        --gray-800: #e5e5e5;
+      }
     }
     
     html { scroll-behavior: smooth; }
@@ -42,14 +65,14 @@
       font-family: var(--font);
       font-size: 16px;
       line-height: 1.6;
-      color: var(--gray-800);
-      background: var(--white);
+      color: var(--text-primary);
+      background: var(--bg-primary);
       -webkit-font-smoothing: antialiased;
     }
     
     ::selection {
-      background: var(--black);
-      color: var(--white);
+      background: var(--brand-green);
+      color: #ffffff;
     }
     
     a { color: inherit; text-decoration: none; }
@@ -64,7 +87,13 @@
       background: rgba(255,255,255,0.97);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .header {
+        background: rgba(10,10,10,0.95);
+      }
     }
     
     .header__inner {
@@ -77,10 +106,18 @@
     }
     
     .header__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 1.25rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: var(--black);
+      color: var(--text-primary);
+    }
+    
+    .header__logo img {
+      height: 28px;
+      width: auto;
     }
     
     .header__nav {
@@ -91,11 +128,11 @@
     .header__nav a {
       font-size: 0.9rem;
       font-weight: 500;
-      color: var(--gray-600);
+      color: var(--text-secondary);
       transition: color 0.2s;
     }
     
-    .header__nav a:hover { color: var(--black); }
+    .header__nav a:hover { color: var(--text-primary); }
     
     @media (max-width: 600px) {
       .header__nav { gap: 20px; }
@@ -115,31 +152,31 @@
       gap: 8px;
       font-size: 0.9rem;
       font-weight: 500;
-      color: var(--gray-500);
+      color: var(--text-muted);
       margin-bottom: 32px;
       transition: color 0.2s;
     }
     
-    .content__back:hover { color: var(--black); }
+    .content__back:hover { color: var(--text-primary); }
     
     .content__title {
       font-size: clamp(2rem, 4vw, 2.5rem);
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: var(--black);
+      color: var(--text-primary);
       margin-bottom: 8px;
     }
     
     .content__date {
       font-size: 0.9rem;
-      color: var(--gray-500);
+      color: var(--text-muted);
       margin-bottom: 48px;
     }
     
     .content__body h2 {
       font-size: 1.25rem;
       font-weight: 700;
-      color: var(--black);
+      color: var(--text-primary);
       margin-top: 40px;
       margin-bottom: 16px;
     }
@@ -149,13 +186,13 @@
     }
     
     .content__body p {
-      color: var(--gray-600);
+      color: var(--text-secondary);
       margin-bottom: 16px;
       line-height: 1.7;
     }
     
     .content__body ul {
-      color: var(--gray-600);
+      color: var(--text-secondary);
       margin-bottom: 16px;
       padding-left: 24px;
     }
@@ -166,19 +203,19 @@
     }
     
     .content__body a {
-      color: var(--black);
+      color: var(--text-primary);
       text-decoration: underline;
       text-underline-offset: 2px;
     }
     
     .content__body a:hover {
-      color: var(--gray-600);
+      color: var(--text-secondary);
     }
     
     /* FOOTER */
     .footer {
-      background: var(--black);
-      color: var(--gray-500);
+      background: #0a0a0a;
+      color: #737373;
       padding: 40px 24px;
     }
     
@@ -194,7 +231,7 @@
     
     .footer__logo {
       font-weight: 700;
-      color: var(--white);
+      color: #ffffff;
     }
     
     .footer__links {
@@ -207,7 +244,7 @@
       transition: color 0.2s;
     }
     
-    .footer__links a:hover { color: var(--white); }
+    .footer__links a:hover { color: #ffffff; }
   </style>
 </head>
 <body>
@@ -215,7 +252,10 @@
   <!-- HEADER -->
   <header class="header">
     <div class="header__inner">
-      <a href="/" class="header__logo">ReDewable</a>
+      <a href="/" class="header__logo">
+        <img src="/assets/favicon.png" alt="ReDewable">
+        ReDewable
+      </a>
       <nav class="header__nav">
         <a href="/#project">Project</a>
         <a href="/#approach">Approach</a>
