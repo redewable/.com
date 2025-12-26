@@ -62,20 +62,20 @@
     
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg-primary: #0a0a0a;
-        --bg-secondary: #141414;
-        --bg-tertiary: #1a1a1a;
+        --bg-primary: #111111;
+        --bg-secondary: #1a1a1a;
+        --bg-tertiary: #222222;
         --text-primary: #f5f5f5;
         --text-secondary: #a3a3a3;
         --text-muted: #737373;
-        --border-color: #262626;
+        --border-color: #2a2a2a;
         --black: #f5f5f5;
-        --white: #0a0a0a;
-        --gray-50: #141414;
-        --gray-100: #1a1a1a;
-        --gray-200: #262626;
+        --white: #111111;
+        --gray-50: #1a1a1a;
+        --gray-100: #222222;
+        --gray-200: #2a2a2a;
         --gray-800: #e5e5e5;
-        --gray-900: #171717;
+        --gray-900: #1a1a1a;
       }
     }
     
@@ -176,11 +176,11 @@
        HERO
        ============================================ */
     .hero {
-      min-height: 100vh;
+      min-height: 90vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 120px 24px 80px;
+      padding: 100px 24px 60px;
       max-width: var(--max-width);
       margin: 0 auto;
       position: relative;
@@ -193,7 +193,7 @@
       right: -20%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(34, 197, 94, 0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.05) 0%, transparent 70%);
       pointer-events: none;
       z-index: -1;
     }
@@ -202,14 +202,16 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 12px 6px 8px;
+      padding: 8px 14px 8px 10px;
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
-      border-radius: 100px;
-      font-size: 0.8rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
       font-weight: 600;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 28px;
       width: fit-content;
     }
     
@@ -227,21 +229,31 @@
     }
     
     .hero__title {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(2.5rem, 5.5vw, 3.75rem);
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.03em;
       color: var(--text-primary);
-      margin-bottom: 32px;
-      max-width: 700px;
+      margin-bottom: 20px;
+      max-width: 600px;
     }
     
     .hero__subtitle {
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
       color: var(--text-secondary);
-      max-width: 600px;
-      line-height: 1.6;
-      margin-bottom: 48px;
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    
+    .hero__subtitle br {
+      display: none;
+    }
+    
+    @media (max-width: 600px) {
+      .hero__subtitle br {
+        display: block;
+      }
     }
     
     .hero__cta {
@@ -295,7 +307,7 @@
        SECTION BASICS
        ============================================ */
     .section {
-      padding: 100px 24px;
+      padding: 70px 24px;
       max-width: var(--max-width);
       margin: 0 auto;
     }
@@ -348,7 +360,7 @@
     .project__inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: 60px 24px;
     }
     
     .project__header {
@@ -357,7 +369,7 @@
       align-items: flex-start;
       flex-wrap: wrap;
       gap: 24px;
-      margin-bottom: 48px;
+      margin-bottom: 36px;
     }
     
     .project__title-group h2 {
@@ -391,7 +403,7 @@
     
     .project__grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--border-color);
       border: 1px solid var(--border-color);
@@ -399,9 +411,21 @@
       overflow: hidden;
     }
     
+    @media (max-width: 768px) {
+      .project__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .project__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
     .project__item {
       background: var(--bg-primary);
-      padding: 24px;
+      padding: 22px 20px;
     }
     
     .project__item-label {
@@ -434,7 +458,7 @@
     }
     
     .project__actions {
-      margin-top: 32px;
+      margin-top: 24px;
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
@@ -474,14 +498,14 @@
     .approach__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 48px;
-      margin-top: 48px;
+      gap: 36px;
+      margin-top: 36px;
     }
     
     @media (max-width: 800px) {
       .approach__grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 32px;
       }
     }
     
@@ -540,13 +564,13 @@
     .contact__inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: 60px 24px;
     }
     
     .contact__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 60px;
     }
     
     @media (max-width: 700px) {
@@ -600,9 +624,9 @@
     }
     
     .footer {
-      background: #0a0a0a;
+      background: #0d0d0d;
       color: #737373;
-      padding: 40px 24px;
+      padding: 32px 24px;
     }
     
     .footer__inner {
@@ -690,12 +714,11 @@
     <div class="stagger visible">
       <div class="hero__badge">
         <span class="hero__badge-dot"></span>
-        ERCOT Battery Storage
+        ERCOT · Battery Storage · Texas
       </div>
       <h1 class="hero__title">We find what others miss.</h1>
       <p class="hero__subtitle">
-        Precision site selection. Surgical execution. Institutional-grade exits.<br><br>
-        ReDewable identifies high-value battery storage opportunities in ERCOT, develops them to NTP, and positions them for acquisition by operators who deploy at scale.
+        Precision site selection. Surgical execution. Institutional-grade exits. We identify high-value battery storage opportunities in ERCOT, develop them to NTP, and position them for acquisition by operators who deploy at scale.
       </p>
       <div class="hero__cta">
         <a href="/project-anson.html" class="btn btn--primary">
