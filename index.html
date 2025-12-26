@@ -5,10 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ReDewable Energy Company - Precision battery storage development in ERCOT. We find what others miss.">
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
+  
+  <!-- Open Graph / Social Share -->
   <meta property="og:title" content="ReDewable Energy Company">
   <meta property="og:description" content="Precision battery storage development. Surgical execution. Institutional-grade exits.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.redewable.com">
+  <meta property="og:image" content="https://www.redewable.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.redewable.com/assets/og-image.png">
   
   <title>ReDewable Energy Company</title>
   
@@ -38,9 +46,37 @@
       --gray-900: #171717;
       --green: #22c55e;
       --green-dark: #16a34a;
+      --brand-green: #1a3d2f;
       
       --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --max-width: 1200px;
+      
+      --bg-primary: var(--white);
+      --bg-secondary: var(--gray-50);
+      --bg-tertiary: var(--gray-900);
+      --text-primary: var(--gray-800);
+      --text-secondary: var(--gray-600);
+      --text-muted: var(--gray-500);
+      --border-color: var(--gray-200);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #141414;
+        --bg-tertiary: #1a1a1a;
+        --text-primary: #f5f5f5;
+        --text-secondary: #a3a3a3;
+        --text-muted: #737373;
+        --border-color: #262626;
+        --black: #f5f5f5;
+        --white: #0a0a0a;
+        --gray-50: #141414;
+        --gray-100: #1a1a1a;
+        --gray-200: #262626;
+        --gray-800: #e5e5e5;
+        --gray-900: #171717;
+      }
     }
     
     html {
@@ -51,13 +87,13 @@
       font-family: var(--font);
       font-size: 16px;
       line-height: 1.6;
-      color: var(--gray-800);
-      background: var(--white);
+      color: var(--text-primary);
+      background: var(--bg-primary);
       -webkit-font-smoothing: antialiased;
     }
     
     ::selection {
-      background: var(--black);
+      background: var(--brand-green);
       color: var(--white);
     }
     
@@ -78,7 +114,13 @@
       background: rgba(255,255,255,0.97);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .header {
+        background: rgba(10,10,10,0.95);
+      }
     }
     
     .header__inner {
@@ -91,10 +133,18 @@
     }
     
     .header__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 1.25rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: var(--black);
+      color: var(--text-primary);
+    }
+    
+    .header__logo img {
+      height: 28px;
+      width: auto;
     }
     
     .header__nav {
@@ -105,12 +155,12 @@
     .header__nav a {
       font-size: 0.9rem;
       font-weight: 500;
-      color: var(--gray-600);
+      color: var(--text-secondary);
       transition: color 0.2s;
     }
     
     .header__nav a:hover {
-      color: var(--black);
+      color: var(--text-primary);
     }
     
     @media (max-width: 600px) {
@@ -153,11 +203,12 @@
       align-items: center;
       gap: 8px;
       padding: 6px 12px 6px 8px;
-      background: var(--gray-100);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
       border-radius: 100px;
       font-size: 0.8rem;
       font-weight: 600;
-      color: var(--gray-700);
+      color: var(--text-secondary);
       margin-bottom: 24px;
       width: fit-content;
     }
@@ -180,14 +231,14 @@
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.03em;
-      color: var(--black);
+      color: var(--text-primary);
       margin-bottom: 32px;
       max-width: 700px;
     }
     
     .hero__subtitle {
       font-size: clamp(1.1rem, 2vw, 1.35rem);
-      color: var(--gray-600);
+      color: var(--text-secondary);
       max-width: 600px;
       line-height: 1.6;
       margin-bottom: 48px;
@@ -213,22 +264,23 @@
     }
     
     .btn--primary {
-      background: var(--black);
-      color: var(--white);
+      background: var(--brand-green);
+      color: #ffffff;
     }
     
     .btn--primary:hover {
-      background: var(--gray-800);
+      background: #152f24;
       transform: translateY(-1px);
     }
     
     .btn--secondary {
-      background: var(--gray-100);
-      color: var(--black);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
     }
     
     .btn--secondary:hover {
-      background: var(--gray-200);
+      background: var(--border-color);
     }
     
     .btn__arrow {
@@ -264,7 +316,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--gray-500);
+      color: var(--text-muted);
       margin-bottom: 16px;
     }
     
@@ -277,20 +329,20 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 24px;
-      color: var(--black);
+      color: var(--text-primary);
     }
     
     .section--dark .section__title {
-      color: var(--white);
+      color: #ffffff;
     }
     
     /* ============================================
        PROJECT SECTION
        ============================================ */
     .project {
-      background: var(--gray-50);
-      border-top: 1px solid var(--gray-200);
-      border-bottom: 1px solid var(--gray-200);
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
     }
     
     .project__inner {
@@ -311,13 +363,13 @@
     .project__title-group h2 {
       font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 700;
-      color: var(--black);
+      color: var(--text-primary);
       margin-bottom: 8px;
     }
     
     .project__location {
       font-size: 1rem;
-      color: var(--gray-600);
+      color: var(--text-secondary);
     }
     
     .project__capacity {
@@ -327,13 +379,13 @@
     .project__capacity-number {
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-weight: 700;
-      color: var(--black);
+      color: var(--text-primary);
       line-height: 1;
     }
     
     .project__capacity-unit {
       font-size: 1rem;
-      color: var(--gray-500);
+      color: var(--text-muted);
       margin-top: 4px;
     }
     
@@ -341,14 +393,14 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1px;
-      background: var(--gray-200);
-      border: 1px solid var(--gray-200);
+      background: var(--border-color);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       overflow: hidden;
     }
     
     .project__item {
-      background: var(--white);
+      background: var(--bg-primary);
       padding: 24px;
     }
     
@@ -357,14 +409,14 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--gray-500);
+      color: var(--text-muted);
       margin-bottom: 8px;
     }
     
     .project__item-value {
       font-size: 1.1rem;
       font-weight: 600;
-      color: var(--black);
+      color: var(--text-primary);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -392,7 +444,7 @@
        PIPELINE
        ============================================ */
     .pipeline {
-      border-bottom: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--border-color);
     }
     
     .pipeline__content {
@@ -401,7 +453,7 @@
     
     .pipeline__text {
       font-size: 1.1rem;
-      color: var(--gray-600);
+      color: var(--text-secondary);
       margin-bottom: 24px;
       line-height: 1.7;
     }
@@ -409,8 +461,8 @@
     .pipeline__note {
       margin-top: 24px;
       padding: 20px 24px;
-      background: var(--gray-900);
-      color: var(--white);
+      background: var(--brand-green);
+      color: #ffffff;
       border-radius: 8px;
       font-size: 0.95rem;
       font-weight: 500;
@@ -437,11 +489,11 @@
       font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 12px;
-      color: var(--black);
+      color: var(--text-primary);
     }
     
     .approach__item p {
-      color: var(--gray-600);
+      color: var(--text-secondary);
       line-height: 1.6;
     }
     
@@ -449,8 +501,8 @@
        TEAM
        ============================================ */
     .team {
-      background: var(--gray-50);
-      border-top: 1px solid var(--gray-200);
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
     }
     
     .team__content {
@@ -459,7 +511,7 @@
     
     .team__text {
       font-size: 1.1rem;
-      color: var(--gray-600);
+      color: var(--text-secondary);
       line-height: 1.7;
       margin-bottom: 24px;
     }
@@ -469,7 +521,7 @@
       align-items: center;
       gap: 8px;
       font-weight: 600;
-      color: var(--black);
+      color: var(--text-primary);
       transition: gap 0.2s;
     }
     
@@ -481,8 +533,8 @@
        CONTACT / FOOTER
        ============================================ */
     .contact {
-      background: var(--gray-900);
-      color: var(--white);
+      background: var(--brand-green);
+      color: #ffffff;
     }
     
     .contact__inner {
@@ -511,7 +563,7 @@
     }
     
     .contact__subtitle {
-      color: var(--gray-400);
+      color: rgba(255,255,255,0.75);
       font-size: 1.1rem;
       line-height: 1.6;
     }
@@ -523,7 +575,7 @@
     }
     
     .contact__link-item {
-      border-bottom: 1px solid var(--gray-700);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
       padding-bottom: 24px;
     }
     
@@ -532,24 +584,24 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--gray-500);
+      color: rgba(255,255,255,0.6);
       margin-bottom: 8px;
     }
     
     .contact__link-value {
       font-size: 1.1rem;
       font-weight: 500;
-      color: var(--white);
-      transition: color 0.2s;
+      color: #ffffff;
+      transition: opacity 0.2s;
     }
     
     .contact__link-value:hover {
-      color: var(--green);
+      opacity: 0.8;
     }
     
     .footer {
-      background: var(--black);
-      color: var(--gray-500);
+      background: #0a0a0a;
+      color: #737373;
       padding: 40px 24px;
     }
     
@@ -565,7 +617,7 @@
     
     .footer__logo {
       font-weight: 700;
-      color: var(--white);
+      color: #ffffff;
     }
     
     .footer__links {
@@ -579,7 +631,7 @@
     }
     
     .footer__links a:hover {
-      color: var(--white);
+      color: #ffffff;
     }
     
     /* ============================================
@@ -620,7 +672,10 @@
   <!-- HEADER -->
   <header class="header">
     <div class="header__inner">
-      <a href="/" class="header__logo">ReDewable</a>
+      <a href="/" class="header__logo">
+        <img src="/assets/favicon.png" alt="ReDewable">
+        ReDewable
+      </a>
       <nav class="header__nav">
         <a href="#project">Project</a>
         <a href="#approach">Approach</a>
@@ -643,7 +698,7 @@
         ReDewable identifies high-value battery storage opportunities in ERCOT, develops them to NTP, and positions them for acquisition by operators who deploy at scale.
       </p>
       <div class="hero__cta">
-        <a href="#project" class="btn btn--primary">
+        <a href="/project-anson.html" class="btn btn--primary">
           View Current Project
           <span class="btn__arrow">→</span>
         </a>
@@ -693,22 +748,22 @@
           <div class="project__item-value">ANS Engineering</div>
         </div>
         <div class="project__item">
-          <div class="project__item-label">Technology</div>
-          <div class="project__item-value">Enerzinx</div>
+          <div class="project__item-label">Battery Technology</div>
+          <div class="project__item-value">Tesla Megapack</div>
         </div>
         <div class="project__item">
           <div class="project__item-label">Target NTP</div>
-          <div class="project__item-value">Q4 2026</div>
+          <div class="project__item-value">Q1 2027</div>
         </div>
       </div>
       
       <div class="project__actions fade-up">
-        <a href="mailto:power@redewable.com?subject=ReDew%20Anson%20Inquiry" class="btn btn--primary">
-          Request Project Details
+        <a href="/project-anson.html" class="btn btn--primary">
+          View Full Project Details
           <span class="btn__arrow">→</span>
         </a>
-        <a href="mailto:invest@redewable.com?subject=Investment%20Inquiry" class="btn btn--secondary">
-          Investor Inquiries
+        <a href="mailto:power@redewable.com?subject=ReDew%20Anson%20Inquiry" class="btn btn--secondary">
+          Request Information
         </a>
       </div>
     </div>
@@ -797,6 +852,7 @@
       <div class="footer__logo">ReDewable Energy Company</div>
       <div class="footer__links">
         <a href="https://www.linkedin.com/company/redewable" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/privacy.html">Privacy</a>
         <span>© 2025</span>
       </div>
     </div>
