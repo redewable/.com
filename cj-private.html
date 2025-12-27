@@ -1365,21 +1365,34 @@
         </main>
     </div>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Password check
         const correctPassword = 'oneradmate';
         
         function checkPassword() {
-            const input = document.getElementById('passwordInput').value;
+            const input = document.getElementById('passwordInput').value.trim().toLowerCase();
             const error = document.getElementById('passwordError');
             
             if (input === correctPassword) {
                 document.getElementById('passwordScreen').style.display = 'none';
                 document.getElementById('mainContent').classList.add('visible');
                 sessionStorage.setItem('authenticated', 'true');
+                
+                // Track successful access - uncomment ONE of these options:
+                
+                // OPTION 1: GoatCounter (free at goatcounter.com)
+                // Replace YOUR_CODE with your goatcounter subdomain
+                // var gc = document.createElement('script');
+                // gc.src = 'https://YOUR_CODE.goatcounter.com/count?p=/cj-private-accessed';
+                // document.body.appendChild(gc);
+                
+                // OPTION 2: Simple image pixel ping (works with any analytics)
+                // new Image().src = 'https://your-tracking-url.com/pixel.gif?accessed=true&t=' + Date.now();
+                
             } else {
                 error.style.display = 'block';
                 document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
             }
         }
         
@@ -1391,3 +1404,20 @@
         
         // Enter key to submit
         document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        // Focus on password input on load
+        window.addEventListener('load', function() {
+            document.getElementById('passwordInput').focus();
+        });
+        
+        // Save as PDF
+        function saveAsPDF() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
