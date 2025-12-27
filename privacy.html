@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ReDewable Energy Company Privacy Policy">
   
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="apple-touch-icon" href="/assets/favicon.png">
   
@@ -38,7 +37,8 @@
       --brand-green: #1a3d2f;
       
       --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --max-width: 800px;
+      --max-width: 800px; /* Kept narrow for privacy text readability */
+      --header-width: 1200px; /* Standard width for header alignment */
       
       --bg-primary: var(--white);
       --text-primary: var(--gray-800);
@@ -59,7 +59,10 @@
       }
     }
     
-    html { scroll-behavior: smooth; }
+    html { 
+      scroll-behavior: smooth; 
+      overflow-x: hidden; /* Added per request */
+    }
     
     body {
       font-family: var(--font);
@@ -68,6 +71,7 @@
       color: var(--text-primary);
       background: var(--bg-primary);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; /* Added per request */
     }
     
     ::selection {
@@ -97,7 +101,7 @@
     }
     
     .header__inner {
-      max-width: 1200px;
+      max-width: var(--header-width);
       margin: 0 auto;
       padding: 20px 24px;
       display: flex;
@@ -134,9 +138,88 @@
     
     .header__nav a:hover { color: var(--text-primary); }
     
-    @media (max-width: 600px) {
-      .header__nav { gap: 20px; }
-      .header__nav a { font-size: 0.85rem; }
+    /* Burger Menu Styles */
+    .header__burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      z-index: 110;
+    }
+    
+    .header__burger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    .header__burger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .header__burger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .header__burger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    
+    /* Mobile Menu Styles */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      z-index: 99;
+      padding: 120px 24px 40px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 32px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .mobile-menu.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .mobile-menu a {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: color 0.2s;
+    }
+    
+    .mobile-menu a:hover {
+      color: var(--brand-green);
+    }
+    
+    /* Responsive Triggers */
+    @media (max-width: 768px) {
+      .header__nav {
+        display: none;
+      }
+      
+      .header__burger {
+        display: flex;
+      }
+      
+      .mobile-menu {
+        display: flex;
+      }
     }
     
     /* CONTENT */
@@ -220,7 +303,7 @@
     }
     
     .footer__inner {
-      max-width: 1200px;
+      max-width: var(--header-width);
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -249,7 +332,6 @@
 </head>
 <body>
   
-  <!-- HEADER -->
   <header class="header">
     <div class="header__inner">
       <a href="/" class="header__logo">
@@ -262,10 +344,21 @@
         <a href="/team.html">Team</a>
         <a href="/#contact">Contact</a>
       </nav>
+      <div class="header__burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
   
-  <!-- CONTENT -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="/#project">Project</a>
+    <a href="/#approach">Approach</a>
+    <a href="/team.html">Team</a>
+    <a href="/#contact">Contact</a>
+  </nav>
+  
   <main class="content">
     <a href="/" class="content__back">← Back to Home</a>
     
@@ -325,7 +418,6 @@
     </div>
   </main>
   
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__logo">ReDewable Energy Company</div>
@@ -335,5 +427,24 @@
       </div>
     </div>
   </footer>
+  
+  <script>
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
 </body>
 </html>
