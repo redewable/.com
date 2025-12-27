@@ -81,6 +81,7 @@
     
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
     
     body {
@@ -90,6 +91,7 @@
       color: var(--text-primary);
       background: var(--bg-primary);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     
     ::selection {
@@ -119,7 +121,7 @@
     
     @media (prefers-color-scheme: dark) {
       .header {
-        background: rgba(10,10,10,0.95);
+        background: rgba(17,17,17,0.95);
       }
     }
     
@@ -163,12 +165,86 @@
       color: var(--text-primary);
     }
     
-    @media (max-width: 600px) {
+    /* Burger Menu */
+    .header__burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      z-index: 110;
+    }
+    
+    .header__burger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    .header__burger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .header__burger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .header__burger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      z-index: 99;
+      padding: 120px 24px 40px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 32px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .mobile-menu.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .mobile-menu a {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: color 0.2s;
+    }
+    
+    .mobile-menu a:hover {
+      color: var(--brand-green);
+    }
+    
+    @media (max-width: 768px) {
       .header__nav {
-        gap: 20px;
+        display: none;
       }
-      .header__nav a {
-        font-size: 0.85rem;
+      
+      .header__burger {
+        display: flex;
+      }
+      
+      .mobile-menu {
+        display: flex;
       }
     }
     
@@ -190,12 +266,21 @@
       content: '';
       position: absolute;
       top: 0;
-      right: -20%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(34, 197, 94, 0.05) 0%, transparent 70%);
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.06) 0%, transparent 70%);
       pointer-events: none;
       z-index: -1;
+    }
+    
+    @media (max-width: 768px) {
+      .hero::before {
+        width: 300px;
+        height: 300px;
+        right: -50px;
+        top: 50px;
+      }
     }
     
     .hero__badge {
@@ -244,16 +329,6 @@
       max-width: 540px;
       line-height: 1.7;
       margin-bottom: 36px;
-    }
-    
-    .hero__subtitle br {
-      display: none;
-    }
-    
-    @media (max-width: 600px) {
-      .hero__subtitle br {
-        display: block;
-      }
     }
     
     .hero__cta {
@@ -312,17 +387,6 @@
       margin: 0 auto;
     }
     
-    .section--full {
-      max-width: none;
-      padding-left: 0;
-      padding-right: 0;
-    }
-    
-    .section--dark {
-      background: var(--gray-900);
-      color: var(--white);
-    }
-    
     .section__label {
       font-size: 0.8rem;
       font-weight: 600;
@@ -332,20 +396,12 @@
       margin-bottom: 16px;
     }
     
-    .section--dark .section__label {
-      color: var(--gray-400);
-    }
-    
     .section__title {
       font-size: clamp(1.75rem, 4vw, 2.5rem);
       font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 24px;
       color: var(--text-primary);
-    }
-    
-    .section--dark .section__title {
-      color: #ffffff;
     }
     
     /* ============================================
@@ -480,16 +536,6 @@
       color: var(--text-secondary);
       margin-bottom: 24px;
       line-height: 1.7;
-    }
-    
-    .pipeline__note {
-      margin-top: 24px;
-      padding: 20px 24px;
-      background: var(--brand-green);
-      color: #ffffff;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 500;
     }
     
     /* ============================================
@@ -672,7 +718,6 @@
       transform: translateY(0);
     }
     
-    /* Stagger children */
     .stagger > * {
       opacity: 0;
       transform: translateY(20px);
@@ -703,11 +748,24 @@
       <nav class="header__nav">
         <a href="#project">Project</a>
         <a href="#approach">Approach</a>
-        <a href="#team">Team</a>
+        <a href="/team.html">Team</a>
         <a href="#contact">Contact</a>
       </nav>
+      <div class="header__burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
+  
+  <!-- MOBILE MENU -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#project">Project</a>
+    <a href="#approach">Approach</a>
+    <a href="/team.html">Team</a>
+    <a href="#contact">Contact</a>
+  </nav>
   
   <!-- HERO -->
   <section class="hero">
@@ -785,7 +843,7 @@
           View Full Project Details
           <span class="btn__arrow">→</span>
         </a>
-        <a href="mailto:power@redewable.com?subject=ReDew%20Anson%20Inquiry" class="btn btn--secondary">
+        <a href="mailto:power@redewable.com?subject=ReDew%20Anson%20-%20Information%20Request" class="btn btn--secondary">
           Request Information
         </a>
       </div>
@@ -883,6 +941,25 @@
   
   <!-- JS -->
   <script>
+    // Burger Menu
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+    
     // Intersection Observer for fade animations
     const observerOptions = {
       threshold: 0.1,
@@ -901,7 +978,7 @@
       observer.observe(el);
     });
     
-    // Smooth scroll
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
