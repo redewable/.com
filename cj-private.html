@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>ReDewable Energy — Confidential</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <style>
         :root {
             --brand-green: #1a3d2f;
@@ -27,7 +27,7 @@
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--white);
             color: var(--black);
-            line-height: 1.6;
+            line-height: 1.7;
         }
         
         /* Password Screen */
@@ -204,6 +204,12 @@
             letter-spacing: 1px;
         }
         
+        .cover .target-date {
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
         /* Site Image */
         .site-image {
             width: 100%;
@@ -226,7 +232,7 @@
         h2 {
             color: var(--brand-green);
             font-size: 1.75rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--brand-green);
         }
@@ -234,13 +240,13 @@
         h3 {
             color: var(--black);
             font-size: 1.25rem;
-            margin: 1.5rem 0 0.75rem;
+            margin: 1.75rem 0 1rem;
         }
         
         h4 {
             color: var(--gray);
             font-size: 1.1rem;
-            margin: 1.25rem 0 0.5rem;
+            margin: 1.5rem 0 0.75rem;
         }
         
         p {
@@ -249,18 +255,18 @@
         }
         
         ul, ol {
-            margin: 1rem 0 1rem 1.5rem;
+            margin: 1rem 0 1.25rem 1.5rem;
         }
         
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
         
         /* Summary Box */
         .summary-box {
             background: var(--light-gray);
             border-left: 4px solid var(--brand-green);
-            padding: 1.5rem;
+            padding: 1.5rem 2rem;
             margin: 1.5rem 0;
             border-radius: 0 8px 8px 0;
         }
@@ -268,7 +274,7 @@
         .summary-box .row {
             display: flex;
             justify-content: space-between;
-            padding: 0.75rem 0;
+            padding: 0.875rem 0;
             border-bottom: 1px solid var(--border);
         }
         
@@ -283,6 +289,7 @@
         
         .summary-box .value {
             font-weight: 500;
+            text-align: right;
         }
         
         /* Tables */
@@ -295,9 +302,10 @@
         }
         
         th, td {
-            padding: 0.875rem 1rem;
+            padding: 1rem 1.25rem;
             text-align: left;
             border: 1px solid var(--border);
+            vertical-align: top;
         }
         
         th {
@@ -315,42 +323,157 @@
             background: var(--light-gray);
         }
         
+        /* View Doc Button */
+        .view-doc-btn {
+            display: inline-block;
+            padding: 0.4rem 0.75rem;
+            background: var(--brand-green);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .view-doc-btn:hover {
+            background: var(--brand-green-light);
+        }
+        
+        .view-doc-btn.coming-soon {
+            background: var(--gray);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
         /* Callout */
         .callout {
             background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-light) 100%);
             color: var(--white);
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 12px;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
             text-align: center;
         }
         
         .callout h3 {
             color: var(--white);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .callout .big-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 0.5rem 0;
-        }
-        
-        .callout .caption {
+            font-size: 1.25rem;
+            margin: 0 0 0.5rem 0;
+            font-weight: 500;
             opacity: 0.9;
         }
         
-        /* Structure Diagram */
-        .structure-diagram {
-            background: var(--light-gray);
-            padding: 2rem;
+        .callout .big-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0.75rem 0;
+            line-height: 1.1;
+        }
+        
+        .callout .caption {
+            opacity: 0.85;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .callout .multiple {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        /* Entity Structure Diagram */
+        .entity-diagram {
+            margin: 2rem 0;
+        }
+        
+        .entity-box {
+            border: 2px solid var(--brand-green);
             border-radius: 12px;
-            margin: 1.5rem 0;
-            font-family: 'Courier New', monospace;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--white);
+        }
+        
+        .entity-box.foundation {
+            background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-light) 100%);
+            color: var(--white);
+        }
+        
+        .entity-box.foundation h4 {
+            color: var(--white);
+            opacity: 0.9;
+        }
+        
+        .entity-box h4 {
             font-size: 0.85rem;
-            line-height: 1.4;
-            overflow-x: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 0.25rem 0;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .entity-box h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.25rem;
+        }
+        
+        .entity-box.foundation h3 {
+            color: var(--white);
+        }
+        
+        .entity-box ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+        
+        .entity-box li {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+        
+        .entity-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .entity-connector {
+            text-align: center;
+            padding: 0.75rem 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .entity-connector .arrow {
+            font-size: 1.5rem;
+            display: block;
+            color: var(--brand-green);
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: #e8f4f0;
+            border: 1px solid #b8d4c8;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .info-box h4 {
+            color: var(--brand-green);
+            margin: 0 0 0.75rem 0;
+            font-size: 1rem;
+        }
+        
+        .info-box p {
+            margin: 0;
+            font-size: 0.95rem;
         }
         
         /* Risk Table */
@@ -424,15 +547,17 @@
                 page-break-inside: avoid;
             }
             
-            h2 {
-                page-break-after: avoid;
-            }
-            
-            h3, h4 {
+            h2, h3, h4 {
                 page-break-after: avoid;
             }
             
             .callout {
+                background: var(--brand-green) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .entity-box.foundation {
                 background: var(--brand-green) !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
@@ -457,11 +582,24 @@
             }
             
             th, td {
-                padding: 0.5rem;
+                padding: 0.75rem;
             }
             
             .header-actions {
                 display: none;
+            }
+            
+            .entity-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-box .row {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+            
+            .summary-box .value {
+                text-align: left;
             }
         }
     </style>
@@ -470,7 +608,7 @@
     <!-- Password Screen -->
     <div class="password-screen" id="passwordScreen">
         <div class="password-box">
-            <img src="logo-mark.png" alt="ReDewable">
+            <img src="assets/logo-mark.png" alt="ReDewable">
             <h2>Confidential Document</h2>
             <p>Enter the access code to view this proposal</p>
             <input type="password" id="passwordInput" placeholder="Access Code" autocomplete="off">
@@ -483,7 +621,7 @@
     <div class="content" id="mainContent">
         <header>
             <div class="header-brand">
-                <img src="logo-mark.png" alt="ReDewable">
+                <img src="assets/logo-mark.png" alt="ReDewable">
                 <span>ReDewable Energy</span>
             </div>
             <div class="header-actions">
@@ -500,11 +638,12 @@
                 400MW Battery Energy Storage System<br>
                 Jones County, Texas — ERCOT West
             </div>
+            <div class="target-date"><strong>Target Launch:</strong> January 1, 2026</div>
             <div class="confidential">CONFIDENTIAL — DECEMBER 2025</div>
         </div>
         
         <!-- Site Image -->
-        <img src="site-aerial.jpg" alt="ReDew Anson Site" class="site-image">
+        <img src="assets/site-aerial.jpg" alt="ReDew Anson Site" class="site-image">
         
         <main>
             <!-- Executive Summary -->
@@ -605,6 +744,10 @@
                         <td>✓ Engaged (Enerzinx)</td>
                     </tr>
                     <tr>
+                        <td>Engineering</td>
+                        <td>✓ Engaged (ANS Engineering, fka FastGrid)</td>
+                    </tr>
+                    <tr>
                         <td>PACE Financing</td>
                         <td>✓ Engaged (PACE Houston)</td>
                     </tr>
@@ -630,73 +773,63 @@
                 
                 <h3>Entity Architecture</h3>
                 
-                <div class="structure-diagram">
-┌─────────────────────────────────────────────────────────────────┐
-│              CAYMAN ISLANDS FOUNDATION                          │
-│              "ReDewable Foundation Ltd."                        │
-│                                                                 │
-│  • Orphan structure (no shareholders)                           │
-│  • 5-member board with independent directors                    │
-│  • Holds: Protocol IP, $RDW tokens, treasury, 40% project equity│
-│  • Supervised by Cayman professional services firm              │
-└─────────────────────────────────┬───────────────────────────────┘
-                                  │
-                    ┌─────────────┴─────────────┐
-                    │ 100% owns                 │ Service Agreement
-                    ▼                           ▼
-┌───────────────────────────┐   ┌─────────────────────────────────┐
-│    BVI NFT ISSUER         │   │   REDEWABLE ENERGY CO. LLC      │
-│   "ReDew NFT Ltd."        │   │         (Delaware)              │
-│                           │   │                                 │
-│  • Issues Validator NFTs  │   │  • Service provider to Found.   │
-│  • Receives SOL proceeds  │   │  • Manages ReDew Anson LLC      │
-│  • Remits to Foundation   │   │  • Holds 35% project equity     │
-└───────────────────────────┘   └────────────────┬────────────────┘
-                                                 │
-                                                 │ Manager
-                                                 ▼
-                              ┌─────────────────────────────────────┐
-                              │        REDEW ANSON, LLC             │
-                              │          (Texas SPV)                │
-                              │                                     │
-                              │  Holds: Land rights, contracts      │
-                              │  Equity: Found. 40% | ReDew 35%     │
-                              │          Seed Investors 25%         │
-                              │  Exit: Sale to institutional buyer  │
-                              └─────────────────────────────────────┘
+                <div class="entity-diagram">
+                    <!-- Foundation -->
+                    <div class="entity-box foundation">
+                        <h4>Cayman Islands</h4>
+                        <h3>ReDewable Foundation Ltd.</h3>
+                        <ul>
+                            <li>Orphan structure (no shareholders)</li>
+                            <li>5-member board with independent directors</li>
+                            <li>Supervised by Cayman professional services firm</li>
+                            <li>Holds: Protocol IP, $RDW tokens, treasury, 40% project equity</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="entity-connector">
+                        <span class="arrow">↓</span>
+                        <span>100% owns</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>Service Agreement</span>
+                        <span class="arrow">↓</span>
+                    </div>
+                    
+                    <!-- Middle Row -->
+                    <div class="entity-row">
+                        <div class="entity-box">
+                            <h4>British Virgin Islands</h4>
+                            <h3>ReDew NFT Ltd.</h3>
+                            <ul>
+                                <li>Issues Validator License NFTs</li>
+                                <li>Receives SOL proceeds</li>
+                                <li>Remits funds to Foundation</li>
+                            </ul>
+                        </div>
+                        <div class="entity-box">
+                            <h4>Delaware LLC</h4>
+                            <h3>ReDewable Energy Co. LLC</h3>
+                            <ul>
+                                <li>Service provider to Foundation</li>
+                                <li>Manages ReDew Anson LLC</li>
+                                <li>Holds 35% project equity</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="entity-connector">
+                        <span class="arrow">↓</span>
+                        <span>Manager</span>
+                    </div>
+                    
+                    <!-- SPV -->
+                    <div class="entity-box">
+                        <h4>Texas SPV</h4>
+                        <h3>ReDew Anson, LLC</h3>
+                        <ul>
+                            <li>Holds: Land rights, project contracts, development assets</li>
+                            <li>Equity: Foundation 40% | ReDewable 35% | Seed Investors 25%</li>
+                            <li>Exit: Sale to institutional buyer at NTP</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <h4>1. Cayman Islands Foundation</h4>
-                <ul>
-                    <li>Orphan structure — no shareholders, no single owner</li>
-                    <li>5-member board: Founder + Independent Director + Community Director + 2 Seed Investors</li>
-                    <li>Supervised by Cayman professional services firm</li>
-                    <li>Holds: Protocol IP, $RDW token reserve, DAO treasury, 40% equity in ReDew Anson</li>
-                </ul>
-                
-                <h4>2. BVI NFT Issuer</h4>
-                <ul>
-                    <li>100% owned subsidiary of the Foundation</li>
-                    <li>Issues Validator License NFTs</li>
-                    <li>Receives SOL proceeds, remits to Foundation treasury</li>
-                    <li>Avoids Cayman VASP registration requirements</li>
-                </ul>
-                
-                <h4>3. ReDewable Energy Company, LLC (Delaware)</h4>
-                <ul>
-                    <li>US operating company owned by Talor Byington</li>
-                    <li>Provides development services under arm's length service agreement</li>
-                    <li>Manages ReDew Anson LLC (project SPV)</li>
-                    <li>Holds 35% equity in ReDew Anson</li>
-                </ul>
-                
-                <h4>4. ReDew Anson, LLC (Texas)</h4>
-                <ul>
-                    <li>Project-specific special purpose vehicle</li>
-                    <li>Holds land control agreement, project contracts, development assets</li>
-                    <li>Equity: Foundation 40% | ReDewable LLC 35% | Seed Investors 25%</li>
-                    <li>Exit: Sale to institutional buyer at NTP</li>
-                </ul>
                 
                 <h3>Why This Structure</h3>
                 <table>
@@ -918,9 +1051,7 @@
                     <h3>Your Return</h3>
                     <div class="big-number">$5,700,000</div>
                     <div class="caption">15% of net proceeds on $40M exit</div>
-                    <div style="margin-top: 1rem; font-size: 1.25rem;">
-                        <strong>28.5x</strong> multiple on invested capital
-                    </div>
+                    <div class="multiple"><strong>28.5x</strong> multiple on invested capital</div>
                 </div>
             </section>
             
@@ -929,7 +1060,12 @@
                 <h2>Regulatory Compliance</h2>
                 
                 <h3>NFT/Token Structure — Utility, Not Security</h3>
-                <p>The Validator License NFT is structured as a utility token, not a security. This enables broad participation without SEC registration.</p>
+                <p>The Validator License NFT is structured as a utility token, not a security. This enables broad participation — <strong>anyone globally can purchase an NFT</strong>, regardless of accreditation status.</p>
+                
+                <div class="info-box">
+                    <h4>What is the Howey Test?</h4>
+                    <p>The Howey Test is a legal test established by the U.S. Supreme Court (SEC v. W.J. Howey Co., 1946) to determine whether a transaction qualifies as an "investment contract" — and therefore a security subject to SEC regulation. If all four prongs are met, the asset is a security and must be registered with the SEC or sold under an exemption. By structuring our NFT to fail key prongs, we avoid securities classification entirely.</p>
+                </div>
                 
                 <h4>Howey Test Analysis</h4>
                 <table>
@@ -939,38 +1075,43 @@
                         <th>Analysis</th>
                     </tr>
                     <tr>
-                        <td>Investment of money</td>
+                        <td>1. Investment of money</td>
                         <td>Yes</td>
-                        <td>Buyers pay SOL</td>
+                        <td>Buyers pay SOL — this prong is met</td>
                     </tr>
                     <tr>
-                        <td>Common enterprise</td>
+                        <td>2. Common enterprise</td>
                         <td>Mitigated</td>
-                        <td>Decentralized validator network</td>
+                        <td>Decentralized validator network; rewards vary by individual participation</td>
                     </tr>
                     <tr>
-                        <td>Expectation of profits</td>
+                        <td>3. Expectation of profits</td>
                         <td><strong>NO</strong></td>
-                        <td>Rewards are for work performed, not passive holding</td>
+                        <td>Rewards are compensation for work performed (attestations), not passive investment returns</td>
                     </tr>
                     <tr>
-                        <td>Efforts of others</td>
+                        <td>4. Efforts of others</td>
                         <td><strong>NO</strong></td>
-                        <td>Validators must actively participate monthly</td>
+                        <td>Validators must actively participate monthly; rewards depend on their own work</td>
                     </tr>
                 </table>
                 
+                <div class="info-box">
+                    <h4>Why This Matters: Open Access</h4>
+                    <p>Because the NFT is <strong>not a security</strong>, it can be sold to anyone — no accreditation required, no income verification, no net worth checks. A teacher in Texas, a developer in Germany, or a student in Japan can all participate equally. This is the power of proper token structuring: regulatory clarity enables global, permissionless participation.</p>
+                </div>
+                
                 <h4>Key Protections</h4>
                 <ul>
-                    <li>Active participation required (monthly attestations)</li>
-                    <li>Rewards explicitly tied to work, not holding</li>
-                    <li>No profit language in any marketing materials</li>
-                    <li>Clear disclaimers throughout</li>
-                    <li><strong>Helium precedent:</strong> SEC dropped case (April 2025) establishing hardware + token rewards for network participation ≠ securities</li>
+                    <li><strong>Active participation required:</strong> Monthly attestations are mandatory to earn rewards</li>
+                    <li><strong>Work-based rewards:</strong> Earnings explicitly tied to validator activity, not passive holding</li>
+                    <li><strong>No profit language:</strong> All marketing emphasizes utility and participation, never investment returns</li>
+                    <li><strong>Clear disclaimers:</strong> Terms of service and purchase flow include prominent risk disclosures</li>
+                    <li><strong>Helium precedent:</strong> SEC dropped its case against Helium (April 2025) with prejudice, establishing that hardware + token rewards for network participation ≠ securities</li>
                 </ul>
                 
                 <h3>Your Seed Investment — Properly Exempt Security</h3>
-                <p>Your $200K investment IS a security (LLC equity) — and we're treating it as such with full compliance:</p>
+                <p>Unlike the NFT, your $200K investment <strong>IS</strong> a security (LLC equity) — and we're treating it as such with full compliance:</p>
                 
                 <table>
                     <tr>
@@ -1076,8 +1217,12 @@
                         <th>Milestones</th>
                     </tr>
                     <tr>
+                        <td><strong>Jan 1, 2026</strong></td>
+                        <td><strong>TARGET START</strong> — Close seed; execute subscription agreement; Tranche 1 released</td>
+                    </tr>
+                    <tr>
                         <td>Week 1-2</td>
-                        <td>Close seed; execute subscription agreement; Tranche 1 released; engage Cayman counsel</td>
+                        <td>Engage Cayman counsel (Ogier); begin Foundation formation</td>
                     </tr>
                     <tr>
                         <td>Week 3-4</td>
@@ -1104,34 +1249,45 @@
             
             <!-- Existing Contracts -->
             <section>
-                <h2>Existing Contracts</h2>
-                <p>The following agreements are executed and available for review upon request:</p>
+                <h2>Existing Contracts & Proposals</h2>
+                <p>The following agreements are executed or in hand and available for review:</p>
                 
                 <table>
                     <tr>
                         <th>Partner</th>
                         <th>Role</th>
                         <th>Status</th>
+                        <th>Document</th>
                     </tr>
                     <tr>
                         <td>Clearleaf Hills, LTD</td>
                         <td>Land Control</td>
-                        <td>✓ Executed</td>
+                        <td>✓ Verbal agreement on updated terms</td>
+                        <td><span class="view-doc-btn coming-soon">Coming Soon</span></td>
                     </tr>
                     <tr>
                         <td>Tesla Megapack</td>
                         <td>Technology / EPC</td>
                         <td>✓ Partner</td>
+                        <td>—</td>
                     </tr>
                     <tr>
                         <td>Enerzinx</td>
                         <td>Interconnection</td>
-                        <td>✓ Engaged</td>
+                        <td>✓ Study contract signed; proposal in hand</td>
+                        <td><a href="docs/enerzinx-proposal.pdf" target="_blank" class="view-doc-btn">View Proposal</a></td>
+                    </tr>
+                    <tr>
+                        <td>ANS Engineering<br><small style="color: var(--gray);">(fka FastGrid)</small></td>
+                        <td>Engineering</td>
+                        <td>✓ Full proposal received</td>
+                        <td><a href="docs/ans-proposal.pdf" target="_blank" class="view-doc-btn">View Proposal</a></td>
                     </tr>
                     <tr>
                         <td>PACE Houston</td>
                         <td>PACE Financing</td>
-                        <td>✓ Engaged</td>
+                        <td>✓ Proposal in hand</td>
+                        <td><a href="docs/pace-proposal.pdf" target="_blank" class="view-doc-btn">View Proposal</a></td>
                     </tr>
                 </table>
             </section>
@@ -1183,7 +1339,6 @@
             if (input === correctPassword) {
                 document.getElementById('passwordScreen').style.display = 'none';
                 document.getElementById('mainContent').classList.add('visible');
-                // Store in session so refresh doesn't require re-entry
                 sessionStorage.setItem('authenticated', 'true');
             } else {
                 error.style.display = 'block';
@@ -1204,7 +1359,7 @@
             }
         });
         
-        // Save as PDF (triggers print dialog)
+        // Save as PDF
         function saveAsPDF() {
             window.print();
         }
