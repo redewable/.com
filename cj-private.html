@@ -348,7 +348,7 @@
         
         /* Callout */
         .callout {
-            background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-light) 100%);
+            background: linear-gradient(135deg, rgba(26, 61, 47, 0.8) 0%, rgba(42, 90, 69, 0.8) 100%);
             color: var(--white);
             padding: 2.5rem 2rem;
             border-radius: 12px;
@@ -394,7 +394,6 @@
             border: 2px solid var(--brand-green);
             border-radius: 12px;
             padding: 1.5rem;
-            margin-bottom: 1rem;
             background: var(--white);
         }
         
@@ -439,21 +438,52 @@
         .entity-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 1.5rem;
         }
         
-        .entity-connector {
-            text-align: center;
-            padding: 0.75rem 0;
-            color: var(--gray);
-            font-size: 0.9rem;
+        /* Arrow connectors */
+        .connector-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
         }
         
-        .entity-connector .arrow {
-            font-size: 1.5rem;
-            display: block;
+        .connector-split .connector-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .connector-split .connector-branch .arrow {
+            font-size: 1.75rem;
             color: var(--brand-green);
+            line-height: 1;
+        }
+        
+        .connector-split .connector-branch .label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 0.25rem;
+        }
+        
+        .connector-single {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .connector-single .arrow {
+            font-size: 1.75rem;
+            color: var(--brand-green);
+            line-height: 1;
+        }
+        
+        .connector-single .label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 0.25rem;
         }
         
         /* Info Box */
@@ -704,8 +734,8 @@
                         <td>ERCOT West</td>
                     </tr>
                     <tr>
-                        <td>Technology Partner</td>
-                        <td>Tesla Megapack</td>
+                        <td>Technology</td>
+                        <td><a href="https://www.tesla.com/megapack" target="_blank" style="color: var(--brand-green);">Tesla Megapack</a></td>
                     </tr>
                     <tr>
                         <td>Adjacent Infrastructure</td>
@@ -736,20 +766,20 @@
                         <td>✓ Secured (Clearleaf Hills, LTD)</td>
                     </tr>
                     <tr>
-                        <td>Technology / EPC</td>
-                        <td>✓ Tesla Megapack</td>
+                        <td>Technology</td>
+                        <td>✓ <a href="https://www.tesla.com/megapack" target="_blank" style="color: var(--brand-green);">Tesla Megapack</a></td>
                     </tr>
                     <tr>
                         <td>Interconnection</td>
-                        <td>✓ Engaged (Enerzinx)</td>
+                        <td>✓ Engaged (<a href="https://enerzinx.com/" target="_blank" style="color: var(--brand-green);">Enerzinx</a>)</td>
                     </tr>
                     <tr>
                         <td>Engineering</td>
-                        <td>✓ Engaged (ANS Engineering, fka FastGrid)</td>
+                        <td>✓ Engaged (<a href="https://www.ans-team.com/" target="_blank" style="color: var(--brand-green);">ANS Engineering</a>, fka FastGrid)</td>
                     </tr>
                     <tr>
                         <td>PACE Financing</td>
-                        <td>✓ Engaged (PACE Houston)</td>
+                        <td>✓ Engaged (<a href="https://www.pacehouston.com/" target="_blank" style="color: var(--brand-green);">PACE Houston</a>)</td>
                     </tr>
                     <tr>
                         <td>Environmental</td>
@@ -786,10 +816,16 @@
                         </ul>
                     </div>
                     
-                    <div class="entity-connector">
-                        <span class="arrow">↓</span>
-                        <span>100% owns</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>Service Agreement</span>
-                        <span class="arrow">↓</span>
+                    <!-- Split connectors -->
+                    <div class="connector-split">
+                        <div class="connector-branch">
+                            <span class="arrow">↓</span>
+                            <span class="label">100% owns</span>
+                        </div>
+                        <div class="connector-branch">
+                            <span class="arrow">↓</span>
+                            <span class="label">Service Agreement</span>
+                        </div>
                     </div>
                     
                     <!-- Middle Row -->
@@ -814,9 +850,10 @@
                         </div>
                     </div>
                     
-                    <div class="entity-connector">
+                    <!-- Single connector -->
+                    <div class="connector-single">
                         <span class="arrow">↓</span>
-                        <span>Manager</span>
+                        <span class="label">Manager</span>
                     </div>
                     
                     <!-- SPV -->
@@ -1260,34 +1297,34 @@
                         <th>Document</th>
                     </tr>
                     <tr>
-                        <td>Clearleaf Hills, LTD</td>
+                        <td><a href="https://www.clearleafhills.com" target="_blank" style="color: var(--brand-green);">Clearleaf Hills, LTD</a></td>
                         <td>Land Control</td>
                         <td>✓ Verbal agreement on updated terms</td>
                         <td><span class="view-doc-btn coming-soon">Coming Soon</span></td>
                     </tr>
                     <tr>
-                        <td>Tesla Megapack</td>
-                        <td>Technology / EPC</td>
-                        <td>✓ Partner</td>
-                        <td>—</td>
-                    </tr>
-                    <tr>
-                        <td>Enerzinx</td>
+                        <td><a href="https://enerzinx.com/" target="_blank" style="color: var(--brand-green);">Enerzinx</a></td>
                         <td>Interconnection</td>
                         <td>✓ Study contract signed; proposal in hand</td>
                         <td><a href="docs/enerzinx-proposal.pdf" target="_blank" class="view-doc-btn">View Proposal</a></td>
                     </tr>
                     <tr>
-                        <td>ANS Engineering<br><small style="color: var(--gray);">(fka FastGrid)</small></td>
+                        <td><a href="https://www.ans-team.com/" target="_blank" style="color: var(--brand-green);">ANS Engineering</a><br><small style="color: var(--gray);">(fka FastGrid)</small></td>
                         <td>Engineering</td>
                         <td>✓ Full proposal received</td>
                         <td><a href="docs/ans-proposal.pdf" target="_blank" class="view-doc-btn">View Proposal</a></td>
                     </tr>
                     <tr>
-                        <td>PACE Houston</td>
+                        <td><a href="https://www.pacehouston.com/" target="_blank" style="color: var(--brand-green);">PACE Houston</a></td>
                         <td>PACE Financing</td>
                         <td>✓ Proposal in hand</td>
                         <td><a href="docs/pace-proposal.pdf" target="_blank" class="view-doc-btn">View Proposal</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.tesla.com/megapack" target="_blank" style="color: var(--brand-green);">Tesla Megapack</a></td>
+                        <td>Battery Manufacturer</td>
+                        <td>✓ Selected technology</td>
+                        <td>—</td>
                     </tr>
                 </table>
             </section>
@@ -1315,7 +1352,7 @@
                     <p style="margin-top: 1.5rem;"><strong>Talor Byington</strong></p>
                     <p>Founder & CEO, ReDewable Energy Company, LLC</p>
                     <p style="margin-top: 1rem;">
-                        Email: tb@redewable.com<br>
+                        Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="32465072405756574553505e571c515d5f">[email&#160;protected]</a><br>
                         Website: redewable.com
                     </p>
                 </div>
@@ -1328,7 +1365,7 @@
         </main>
     </div>
     
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Password check
         const correctPassword = 'oneradmate';
         
@@ -1354,15 +1391,3 @@
         
         // Enter key to submit
         document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
-        });
-        
-        // Save as PDF
-        function saveAsPDF() {
-            window.print();
-        }
-    </script>
-</body>
-</html>
