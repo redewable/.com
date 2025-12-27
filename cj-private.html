@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="ReDewable Energy — Seed Investment Proposal">
+    <meta property="og:description" content="400MW Battery Energy Storage System — Confidential Investment Opportunity">
+    <meta property="og:image" content="assets/og-image.png">
+    <meta property="og:type" content="website">
     <title>ReDewable Energy — Confidential</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <style>
@@ -217,6 +221,90 @@
             object-fit: cover;
         }
         
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--brand-green-light);
+            z-index: 1001;
+            transition: width 0.1s ease-out;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .toc h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1rem;
+            color: var(--brand-green);
+        }
+        
+        .toc-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .toc-list li {
+            margin: 0;
+        }
+        
+        .toc-list a {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        
+        .toc-list a:hover {
+            color: var(--brand-green);
+            border-bottom-color: var(--brand-green);
+        }
+        
+        /* Mobile Floating Actions */
+        .mobile-actions {
+            display: none;
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 100;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .mobile-actions button {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .mobile-actions button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
         /* Main */
         main {
             max-width: 900px;
@@ -293,12 +381,18 @@
         }
         
         /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
             font-size: 0.95rem;
             page-break-inside: avoid;
+            min-width: 500px;
         }
         
         th, td {
@@ -552,6 +646,18 @@
                 display: block !important;
             }
             
+            .progress-bar {
+                display: none !important;
+            }
+            
+            .mobile-actions {
+                display: none !important;
+            }
+            
+            .toc {
+                display: none !important;
+            }
+            
             header {
                 position: relative;
                 background: var(--brand-green) !important;
@@ -595,6 +701,10 @@
         }
         
         @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden;
+            }
+            
             .cover h1 {
                 font-size: 1.75rem;
             }
@@ -609,6 +719,7 @@
             
             table {
                 font-size: 0.85rem;
+                min-width: 100%;
             }
             
             th, td {
@@ -619,10 +730,6 @@
                 display: none;
             }
             
-            .entity-row {
-                grid-template-columns: 1fr;
-            }
-            
             .summary-box .row {
                 flex-direction: column;
                 gap: 0.25rem;
@@ -630,6 +737,135 @@
             
             .summary-box .value {
                 text-align: left;
+            }
+            
+            /* Show mobile floating actions */
+            .mobile-actions {
+                display: flex;
+            }
+            
+            /* TOC single column on mobile */
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Mobile Entity Diagram */
+            .entity-diagram {
+                margin: 1.5rem 0;
+            }
+            
+            .connector-split {
+                padding: 1rem 0;
+            }
+            
+            .connector-split .connector-branch .arrow {
+                font-size: 1.25rem;
+            }
+            
+            .connector-split .connector-branch .label {
+                font-size: 0.7rem;
+            }
+            
+            .connector-single {
+                padding: 1rem 0;
+            }
+            
+            .entity-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+                position: relative;
+            }
+            
+            .entity-box {
+                padding: 1rem;
+                cursor: pointer;
+                position: relative;
+            }
+            
+            .entity-box h4 {
+                font-size: 0.6rem;
+                margin-bottom: 0.15rem;
+            }
+            
+            .entity-box h3 {
+                font-size: 0.85rem;
+                margin-bottom: 0;
+                padding-right: 1.25rem;
+            }
+            
+            .entity-box ul {
+                display: none;
+            }
+            
+            .entity-box::after {
+                content: '+';
+                position: absolute;
+                right: 0.75rem;
+                top: 0.75rem;
+                font-size: 1.25rem;
+                color: var(--brand-green);
+                font-weight: 300;
+                line-height: 1;
+            }
+            
+            .entity-box.foundation::after {
+                color: rgba(255,255,255,0.7);
+            }
+            
+            .entity-box.expanded::after {
+                content: '−';
+            }
+            
+            .entity-box li {
+                font-size: 0.8rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            /* Expanded state - full width overlay */
+            .entity-row .entity-box.expanded {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                z-index: 10;
+                background: var(--white);
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            }
+            
+            .entity-row .entity-box.expanded h3 {
+                font-size: 1rem;
+            }
+            
+            .entity-row .entity-box.expanded ul {
+                display: block;
+                margin-top: 0.75rem;
+            }
+            
+            /* Keep row height when one is expanded */
+            .entity-row {
+                min-height: 80px;
+            }
+            
+            /* Foundation box (not in row) */
+            .entity-diagram > .entity-box.foundation {
+                position: relative;
+            }
+            
+            .entity-diagram > .entity-box.foundation.expanded ul {
+                display: block;
+                margin-top: 0.75rem;
+            }
+            
+            /* Bottom SPV box (not in row) */
+            .entity-diagram > .entity-box:last-child {
+                position: relative;
+            }
+            
+            .entity-diagram > .entity-box:last-child.expanded ul {
+                display: block;
+                margin-top: 0.75rem;
             }
         }
     </style>
@@ -649,6 +885,14 @@
     
     <!-- Main Content -->
     <div class="content" id="mainContent">
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progressBar"></div>
+        
+        <!-- Mobile Floating Actions -->
+        <div class="mobile-actions" id="mobileActions">
+            <button onclick="window.print()" title="Print">🖨️</button>
+        </div>
+        
         <header>
             <div class="header-brand">
                 <img src="assets/logo-mark.png" alt="ReDewable">
@@ -673,11 +917,30 @@
         </div>
         
         <!-- Site Image -->
-        <img src="assets/site-aerial.jpg" alt="ReDew Anson Site" class="site-image">
+        <img src="assets/site-aerial.jpg" alt="ReDew Anson Site — Jones County, Texas" class="site-image">
         
         <main>
+            <!-- Table of Contents -->
+            <nav class="toc">
+                <h3>Contents</h3>
+                <ul class="toc-list">
+                    <li><a href="#executive-summary">Executive Summary</a></li>
+                    <li><a href="#the-asset">The Asset</a></li>
+                    <li><a href="#legal-structure">Legal & Entity Structure</a></li>
+                    <li><a href="#your-investment">Your Investment</a></li>
+                    <li><a href="#fund-flow">Fund Flow & Budget</a></li>
+                    <li><a href="#exit-waterfall">Exit Waterfall</a></li>
+                    <li><a href="#regulatory">Regulatory Compliance</a></li>
+                    <li><a href="#protections">Investor Protections</a></li>
+                    <li><a href="#risks">Risk Factors</a></li>
+                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="#contracts">Existing Contracts</a></li>
+                    <li><a href="#the-ask">The Ask</a></li>
+                </ul>
+            </nav>
+            
             <!-- Executive Summary -->
-            <section>
+            <section id="executive-summary">
                 <h2>Executive Summary</h2>
                 <p>ReDewable Energy is raising seed capital to fund the legal infrastructure and development of a 400MW utility-scale battery energy storage system in ERCOT, Texas.</p>
                 
@@ -712,7 +975,7 @@
             </section>
             
             <!-- The Asset -->
-            <section>
+            <section id="the-asset">
                 <h2>The Asset</h2>
                 <h3>ReDew Anson — Jones County, Texas</h3>
                 
@@ -797,7 +1060,7 @@
             </section>
             
             <!-- Legal Structure -->
-            <section>
+            <section id="legal-structure">
                 <h2>Legal & Entity Structure</h2>
                 <p>We are implementing an industry-standard structure used by successful DePIN projects including Helium, Grass, Filecoin, and ENS. This structure provides regulatory clarity, investor protection, and institutional credibility.</p>
                 
@@ -909,7 +1172,7 @@
             </section>
             
             <!-- Your Investment -->
-            <section>
+            <section id="your-investment">
                 <h2>Your Investment</h2>
                 
                 <h3>Seed Terms</h3>
@@ -951,7 +1214,7 @@
             </section>
             
             <!-- Fund Flow -->
-            <section>
+            <section id="fund-flow">
                 <h2>Fund Flow & Budget</h2>
                 
                 <h3>Tranched Funding Structure</h3>
@@ -1036,7 +1299,7 @@
             </section>
             
             <!-- Exit Waterfall -->
-            <section>
+            <section id="exit-waterfall">
                 <h2>Exit Waterfall</h2>
                 <p>When ReDew Anson sells to an institutional buyer at NTP:</p>
                 
@@ -1093,7 +1356,7 @@
             </section>
             
             <!-- Regulatory Compliance -->
-            <section>
+            <section id="regulatory">
                 <h2>Regulatory Compliance</h2>
                 
                 <h3>NFT/Token Structure — Utility, Not Security</h3>
@@ -1179,7 +1442,7 @@
             </section>
             
             <!-- Investor Protections -->
-            <section>
+            <section id="protections">
                 <h2>Investor Protections</h2>
                 
                 <h3>Tranched Funding</h3>
@@ -1208,7 +1471,7 @@
             </section>
             
             <!-- Risk Factors -->
-            <section>
+            <section id="risks">
                 <h2>Risk Factors</h2>
                 <p>Investment in early-stage energy development involves significant risk:</p>
                 
@@ -1245,7 +1508,7 @@
             </section>
             
             <!-- Timeline -->
-            <section>
+            <section id="timeline">
                 <h2>Timeline</h2>
                 
                 <table>
@@ -1285,7 +1548,7 @@
             </section>
             
             <!-- Existing Contracts -->
-            <section>
+            <section id="contracts">
                 <h2>Existing Contracts & Proposals</h2>
                 <p>The following agreements are executed or in hand and available for review:</p>
                 
@@ -1297,7 +1560,7 @@
                         <th>Document</th>
                     </tr>
                     <tr>
-                        <td><a href="https://www.clearleafhills.com" target="_blank" style="color: var(--brand-green);">Clearleaf Hills, LTD</a></td>
+                        <td>Clearleaf Hills, LTD</td>
                         <td>Land Control</td>
                         <td>✓ Verbal agreement on updated terms</td>
                         <td><span class="view-doc-btn coming-soon">Coming Soon</span></td>
@@ -1330,7 +1593,7 @@
             </section>
             
             <!-- The Ask -->
-            <section>
+            <section id="the-ask">
                 <h2>The Ask</h2>
                 <p>I am seeking <strong>$200,000</strong> in seed capital in exchange for:</p>
                 
@@ -1352,7 +1615,7 @@
                     <p style="margin-top: 1.5rem;"><strong>Talor Byington</strong></p>
                     <p>Founder & CEO, ReDewable Energy Company, LLC</p>
                     <p style="margin-top: 1rem;">
-                        Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="32465072405756574553505e571c515d5f">[email&#160;protected]</a><br>
+                        Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="add9cfeddfc8c9c8dacccfc1c883cec2c0">[email&#160;protected]</a><br>
                         Website: redewable.com
                     </p>
                 </div>
@@ -1365,7 +1628,7 @@
         </main>
     </div>
     
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Password check
         const correctPassword = 'oneradmate';
         
@@ -1412,12 +1675,57 @@
         // Focus on password input on load
         window.addEventListener('load', function() {
             document.getElementById('passwordInput').focus();
+            
+            // Mobile accordion for entity boxes
+            const entityBoxes = document.querySelectorAll('.entity-box');
+            entityBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    // Only toggle on mobile
+                    if (window.innerWidth <= 768) {
+                        const parent = this.parentElement;
+                        const isInRow = parent.classList.contains('entity-row');
+                        
+                        // If in a row, close sibling first
+                        if (isInRow) {
+                            const siblings = parent.querySelectorAll('.entity-box');
+                            siblings.forEach(sib => {
+                                if (sib !== this) {
+                                    sib.classList.remove('expanded');
+                                }
+                            });
+                        }
+                        
+                        this.classList.toggle('expanded');
+                    }
+                });
+            });
         });
         
         // Save as PDF
         function saveAsPDF() {
             window.print();
         }
+        
+        // Progress bar
+        function updateProgressBar() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        }
+        
+        window.addEventListener('scroll', updateProgressBar);
+        
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc-list a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
